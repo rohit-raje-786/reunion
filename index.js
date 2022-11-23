@@ -104,7 +104,7 @@ app.post("/register/user", async (req, res) => {
   }
 });
 
-var httpPORT = process.env.PORT || 4000;
+var httpPORT = process.env.PORT;
 
 app.listen(httpPORT, "192.168.238.41", function () {
   console.log("Server is listening on port: " + httpPORT);
