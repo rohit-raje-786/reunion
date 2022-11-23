@@ -1,7 +1,7 @@
 require("dotenv").config();
 var express = require("express");
 const bodyParser = require("body-parser");
-const responses = require("./responses");
+
 var app = express();
 const InitiateMongoServer = require("./config/db");
 
@@ -32,6 +32,7 @@ app.post("/register/user", async (req, res) => {
       "user_wa",
       "user_org_name",
       "whatsapp_name",
+      "branch_name",
     ];
     const channel_sender_id_keys = {
       whatsapp: WA_SENDER_ID_FIELD,
@@ -86,6 +87,7 @@ app.post("/register/user", async (req, res) => {
           email: user_payload.email,
           wa: sender_id,
           whatsapp_verified: user_payload.whatsapp_verified,
+          branch_name: user_payload.branch_name,
         });
         await user.save();
         console.log(user);
