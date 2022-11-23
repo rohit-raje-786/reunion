@@ -41,6 +41,9 @@ const UserSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  branch_name: {
+    type: String,
+  },
 });
 
 // export model user with UserSchema
