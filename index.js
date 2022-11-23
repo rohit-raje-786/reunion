@@ -33,7 +33,6 @@ app.post("/register/user", async (req, res) => {
       "user_org_name",
       "whatsapp_name",
       "branch_name",
-      "new_field",
     ];
     const channel_sender_id_keys = {
       whatsapp: WA_SENDER_ID_FIELD,
@@ -89,7 +88,6 @@ app.post("/register/user", async (req, res) => {
           wa: sender_id,
           whatsapp_verified: user_payload.whatsapp_verified,
           branch_name: user_payload.branch_name,
-          new_field: user_payload.new_field,
         });
         await user.save();
         console.log(user);
