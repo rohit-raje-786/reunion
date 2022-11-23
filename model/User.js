@@ -8,7 +8,6 @@ const UserSchema = mongoose.Schema({
   },
   email: {
     type: String,
-    required: true,
   },
   first_name: {
     type: String,
@@ -41,6 +40,9 @@ const UserSchema = mongoose.Schema({
   whatsapp_verified: {
     type: Boolean,
     default: false,
+  },
+  branch_name: {
+    type: String,
   },
 });
 
