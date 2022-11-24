@@ -1,8 +1,10 @@
 require("dotenv").config();
 
 var express = require("express");
+const { loggers } = require("winston");
 var app = express();
 const User = require("../model/User");
+const logger = require("../helper/logger");
 const router = express.Router();
 
 const WA_SENDER_ID_FIELD = "wa";
@@ -23,8 +25,6 @@ router.post("/user", async (req, res) => {
       "user_wa",
       "user_org_name",
       "whatsapp_name",
-      "branch_name",
-      "new_field",
     ];
     const channel_sender_id_keys = {
       whatsapp: WA_SENDER_ID_FIELD,
@@ -87,12 +87,15 @@ router.post("/user", async (req, res) => {
         return_payload["msg"] = "User was registered";
         return_payload["ok"] = true;
         return_payload["user"] = user;
+        logger.info(`User ${user_payload.email} registered successfully `);
         return res.status(200).send(return_payload);
       }
     } else {
+      logger.error("Internal server error");
       return res.status(500).json({ ok: false, msg: "Internal server error" });
     }
   } catch (e) {
+    logger.error(e.message);
     return res.status(500).json({ msg: e.message });
   }
 });
