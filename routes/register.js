@@ -79,8 +79,6 @@ router.post("/user", async (req, res) => {
           email: user_payload.email,
           wa: sender_id,
           whatsapp_verified: user_payload.whatsapp_verified,
-          branch_name: user_payload.branch_name,
-          new_field: user_payload.new_field,
         });
         await user.save();
         console.log(user);
