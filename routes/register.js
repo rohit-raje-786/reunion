@@ -72,6 +72,7 @@ router.post("/user", async (req, res) => {
       const result = await User.find({ email: user_payload.email });
       if (result.length > 0) {
         console.log("user already exits");
+        logger.error("user already exits");
         return res.status(400).json({ ok: false, msg: "User already exits" });
       } else {
         const user = await new User({
