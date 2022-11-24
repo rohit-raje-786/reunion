@@ -25,6 +25,7 @@ router.post("/user", async (req, res) => {
       "user_wa",
       "user_org_name",
       "whatsapp_name",
+      "branch_name",
     ];
     const channel_sender_id_keys = {
       whatsapp: WA_SENDER_ID_FIELD,
@@ -80,6 +81,7 @@ router.post("/user", async (req, res) => {
           email: user_payload.email,
           wa: sender_id,
           whatsapp_verified: user_payload.whatsapp_verified,
+          branch_name: user_payload.branch_name,
         });
         await user.save();
         console.log(user);
